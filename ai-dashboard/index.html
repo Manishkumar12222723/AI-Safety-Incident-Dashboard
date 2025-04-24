@@ -1,0 +1,162 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Safety Incident Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: url("Background.png") no-repeat center center fixed;
+      background-size: cover;
+      padding: 2rem;
+      margin: 0;
+    }
+
+    .dashboard {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .controls select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    .incident-card {
+      border: 1px solid #e5e7eb;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      background: #fefefe;
+      transition: all 0.2s ease;
+    }
+
+    .incident-card:hover {
+      background-color: #f1f5f9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .incident-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .severity-tag {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .severity-High {
+      background-color: #ef4444;
+    }
+
+    .severity-Medium {
+      background-color: #f59e0b;
+    }
+
+    .severity-Low {
+      background-color: #10b981;
+    }
+
+    .details {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    input, textarea, select, button {
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    button[type="submit"] {
+      background-color: #3b82f6;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>AI Safety Incident Dashboard</h1>
+
+    <div class="controls">
+      <select id="severityFilter">
+        <option value="All">All Severities</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <select id="dateSort">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+      </select>
+    </div>
+
+    <div id="incidentList"></div>
+
+    <h2>Report New Incident</h2>
+    <form id="incidentForm">
+      <input type="text" id="title" placeholder="Incident Title" required />
+      <textarea id="description" rows="4" placeholder="Incident Description" required></textarea>
+      <select id="severity" required>
+        <option value="">Select Severity</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+ 
